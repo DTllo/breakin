@@ -3,6 +3,21 @@
   height: 100vh;
 }
 
+.qr-time {
+  position: absolute;
+  bottom: 14px;
+  color: white;
+  font-size: 15px;
+  align-self: flex-start;
+  width: 100vw;
+  padding-left: 22px;
+}
+.qr-time > span {
+  font-size: 28px;
+  margin-left: 4px;
+  baseline-shift: baseline;
+}
+
 .qr-img-wrapper{
   width: 100vw;
   display: flex;

@@ -2,13 +2,45 @@ import qr from './assets/qr_img.png';
 import detail from './assets/detail_img.png';
 
 import './App.css';
+import {useEffect, useState} from "react";
 
 function App() {
+    let [time,setTime] = useState('')
+    let [second,setSecond] = useState('')
+    function CheckTime(i){
+        if(i < 10){
+            i = '0' + i;
+        }
+        return i;
+    }
+    function GetTime(){
+        let d=new Date();
+        let year = d.getFullYear()
+        let month = d.getMonth() + 1
+        let date = d.getDate()
+        let h=d.getHours();
+        let m=d.getMinutes();
+        let s=d.getSeconds();
+        h=CheckTime(h);
+        m=CheckTime(m);
+        s=CheckTime(s);
+        let result = year + '-' + month + '-' + date + " " + h + ":" + m + ":"
+        setTime(result);
+        setSecond(s)
+    }
+    useEffect(()=> {
+        let times = setInterval(()=>{
+            GetTime()
+        },1000)
+        return ()=>{
+            clearInterval(times)
+        }
+    })
   return (
     <div className="qr-app">
         <div className={'qr-img-wrapper'}>
             <img className={'qr-style'} src={qr}  alt={""}/>
-            <img className={'qr-img-random-qr'} src="https://api.qrserver.com/v1/create-qr-code?data=https://en.wikipedia.org/wiki/On_Liberty&ecc=H&color=44983d"  alt={''}/>
+            <div className={'qr-time'}>{time}<span>{second}</span></div>
         </div>
         <img src={detail} className='detail-style' alt={""}/>
         <div className={"footer-wrapper"}>
