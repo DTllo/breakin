@@ -1,0 +1,61 @@
+.qr-app {
+  width: 100vw;
+  height: 100vh;
+}
+
+.qr-img-wrapper{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.qr-style {
+  width: 100vw;
+}
+
+.qr-img-random-qr{
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 120px;
+}
+
+
+
+.detail-style {
+  width: 100vw;
+}
+
+.footer-wrapper {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+}
+
+.footer-wrapper > .footer-wrapper-phone{
+  font-size: 15px;
+  align-items: center;
+}
+
+.footer-wrapper > .footer-wrapper-shit{
+  margin-top: 9px;
+  color: gray;
+  font-size: 13px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.footer-wrapper > .footer-wrapper-shit-end{
+  margin-top: 3px;
+  color: gray;
+  font-size: 13px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 50px;
+}
+
