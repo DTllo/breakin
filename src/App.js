@@ -114,7 +114,7 @@ function App() {
             }
             <div className={'qr-time'}>{time}<span>{second}</span></div>
             {
-                nickName !== '' && <div className={'qr-nickname'} style={{height:(qrHeight/4),top:toolbarHeight + (qrHeight/8) - 8,paddingLeft:nickName.length == 3?'40px':'65px'}}>{NickNamePre()}{" "}{nickName[nickName.length - 1]}</div>
+                nickName !== '' && <div className={'qr-nickname'} style={{height:(qrHeight/4),top:errCode === 'true'?toolbarHeight + (qrHeight/8) - 20:toolbarHeight + (qrHeight/8) - 8,paddingLeft:nickName.length == 3?'40px':'65px'}}>{NickNamePre()}{" "}{nickName[nickName.length - 1]}</div>
             }
             <div className={'qr-name'} style={{height:(qrHeight/4),top:toolbarHeight}} onClick={()=>{EditName()}}>{}</div>
         </div>
