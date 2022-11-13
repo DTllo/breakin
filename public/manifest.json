@@ -1,0 +1,25 @@
+{
+  "short_name": "我的渝康码",
+  "name": "我的渝康码",
+  "icons": [
+    {
+      "src": "yukang_code_fake.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "yukang_code_fake_192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "yukang_code_fake_512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#4e8aed",
+  "background_color": "#4e8aed"
+}
