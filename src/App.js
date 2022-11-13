@@ -86,7 +86,7 @@ function App() {
         </div>
         <div className={'detail-style-wrapper'} style={{height:detailHeight}}>
             <img src={detail} className='detail-style' alt={""} ref={detailRef}/>
-            <Link to={'/scan'}><div className={'detail-click'} style={{height:detailHeight / 3 + 20}}></div></Link>
+            <Link to={'/yukang_code_fake/scan'}><div className={'detail-click'} style={{height:detailHeight / 3 + 20}}></div></Link>
         </div>
 
         <div className={"footer-wrapper"}>

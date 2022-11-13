@@ -35,7 +35,12 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
     },
     {
-        path: "/scan",
+        path: "/yukang_code_fake/",
+        element: <App />,
+        errorElement: <ErrorPage />,
+    },
+    {
+        path: "/yukang_code_fake/scan",
         element: <ScanResult />,
         errorElement: <ErrorPage />,
     }

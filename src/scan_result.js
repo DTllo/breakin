@@ -122,7 +122,7 @@ function ScanResult(){
             </div>
             <img className={'scan-btns'} src={ScanBtns} alt={''} ref={scanBtnRef}/>
             <div className={'scan-btns-click'} style={{height:btnHeight}}>
-                <Link to={'/'}><div className={'scan-btn-to-qr'}></div></Link>
+                <Link to={'/yukang_code_fake/'}><div className={'scan-btn-to-qr'}></div></Link>
 
                 <div></div>
             </div>
