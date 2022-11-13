@@ -1,12 +1,15 @@
 import qr from './assets/qr_img.png';
+import qr_toolbar from './assets/toolbar.png';
 import detail from './assets/detail_img.png';
 
 import './App.css';
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 function App() {
     let [time,setTime] = useState('')
     let [second,setSecond] = useState('')
+    let toolbarRef = useRef();
+    let [toolbarHeight,setToolbarHeight] = useState(45);
     function CheckTime(i){
         if(i < 10){
             i = '0' + i;
@@ -28,17 +31,28 @@ function App() {
         setTime(result);
         setSecond(s)
     }
+
+    function GetToolBarHeight(){
+        setToolbarHeight(toolbarRef.current.offsetHeight);
+    }
     useEffect(()=> {
         let times = setInterval(()=>{
             GetTime()
         },1000)
+
+        let toolbarConfig = setInterval(()=>{
+            GetToolBarHeight();
+        },100)
         return ()=>{
             clearInterval(times)
+            clearInterval(toolbarConfig)
         }
     })
+
   return (
     <div className="qr-app">
-        <div className={'qr-img-wrapper'}>
+        <div className={'qr-img-wrapper'} style={{paddingTop:toolbarHeight}}>
+            <img className={'qr-toolbar'} src={qr_toolbar}  alt={""} ref={toolbarRef}/>
             <img className={'qr-style'} src={qr}  alt={""}/>
             <div className={'qr-time'}>{time}<span>{second}</span></div>
         </div>
