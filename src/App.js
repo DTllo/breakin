@@ -1,6 +1,8 @@
 import qr from './assets/qr_img.png';
+import qr_err from './assets/qr_img_error.png';
 import qr_toolbar from './assets/toolbar.png';
 import detail from './assets/detail_img.png';
+
 
 import './App.css';
 import {useEffect, useRef, useState} from "react";
@@ -16,6 +18,9 @@ function App() {
     let [nickName,setNickName] = useState("");
     let detailRef = useRef();
     let [detailHeight,setDetailHeight] = useState(252);
+    let [errCode,setErrCode] = useState('false');
+    let [start,setStart] = useState(0);
+    let [end,setEnd] = useState(0);
 
     function CheckTime(i){
         if(i < 10){
@@ -55,6 +60,8 @@ function App() {
     useEffect(()=>{
         let name = localStorage.getItem('name');
         setNickName(name == null ? '' : name);
+        let err = localStorage.getItem('qr_err');
+        setErrCode(err == null ? 'false': err);
     },[])
 
     useEffect(()=> {
@@ -70,17 +77,44 @@ function App() {
             clearInterval(toolbarConfig)
         }
     })
+    function NickNamePre(){
+        if(nickName.length == 3){
+            return "* *";
+        }
+        if(nickName.length == 2){
+            return  "*";
+        }
+    }
 
+    function mouseDown(){
+        let start = new Date();
+    }
 
+    function mouseUp(){
+        if(errCode === 'true'){
+            if(window.confirm("确认切换绿码？")){
+                localStorage.setItem('qr_err','false')
+                setErrCode('false');
+
+            }
+        }else{
+            if(window.confirm("确认切换黄码？")){
+                localStorage.setItem('qr_err','true');
+                setErrCode('true');
+            }
+        }
+    }
 
   return (
     <div className="qr-app">
         <div className={'qr-img-wrapper'} style={{paddingTop:toolbarHeight}}>
             <img className={'qr-toolbar'} src={qr_toolbar}  alt={""} ref={toolbarRef}/>
-            <img className={'qr-style'} src={qr}  alt={""} ref={qrRef}/>
+            {
+                errCode === 'true' ? <img onMouseDown={mouseDown} onMouseUp={mouseUp} className={'qr-style'} src={qr_err}  alt={""} ref={qrRef}/> : <img onMouseDown={mouseDown} onMouseUp={mouseUp} className={'qr-style'} src={qr}  alt={""} ref={qrRef}/>
+            }
             <div className={'qr-time'}>{time}<span>{second}</span></div>
             {
-                nickName !== '' && <div className={'qr-nickname'} style={{height:(qrHeight/4),top:toolbarHeight + (qrHeight/8) - 8}}>{nickName[nickName.length - 1]}</div>
+                nickName !== '' && <div className={'qr-nickname'} style={{height:(qrHeight/4),top:toolbarHeight + (qrHeight/8) - 8,paddingLeft:nickName.length == 3?'40px':'65px'}}>{NickNamePre()}{" "}{nickName[nickName.length - 1]}</div>
             }
             <div className={'qr-name'} style={{height:(qrHeight/4),top:toolbarHeight}} onClick={()=>{EditName()}}>{}</div>
         </div>
