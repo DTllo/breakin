@@ -9,7 +9,10 @@ function App() {
     let [time,setTime] = useState('')
     let [second,setSecond] = useState('')
     let toolbarRef = useRef();
+    let qrRef = useRef();
     let [toolbarHeight,setToolbarHeight] = useState(45);
+    let [qrHeight,setQrHeight] = useState(90);
+    let [nickName,setNickName] = useState("");
     function CheckTime(i){
         if(i < 10){
             i = '0' + i;
@@ -34,7 +37,23 @@ function App() {
 
     function GetToolBarHeight(){
         setToolbarHeight(toolbarRef.current.offsetHeight);
+        setQrHeight(qrRef.current.offsetHeight)
     }
+
+    function EditName(){
+        let name = prompt('请输入你的姓名', '');
+        if(name !== null && name !== "") {
+            console.log(name.length,name[name.length - 1])
+            setNickName(name)
+            localStorage.setItem('name',name);
+        }
+    }
+    useEffect(()=>{
+        let name = localStorage.getItem('name');
+        console.log(name)
+        setNickName(name == null ? '' : name);
+    },[])
+
     useEffect(()=> {
         let times = setInterval(()=>{
             GetTime()
@@ -53,8 +72,12 @@ function App() {
     <div className="qr-app">
         <div className={'qr-img-wrapper'} style={{paddingTop:toolbarHeight}}>
             <img className={'qr-toolbar'} src={qr_toolbar}  alt={""} ref={toolbarRef}/>
-            <img className={'qr-style'} src={qr}  alt={""}/>
+            <img className={'qr-style'} src={qr}  alt={""} ref={qrRef}/>
             <div className={'qr-time'}>{time}<span>{second}</span></div>
+            {
+                nickName !== '' && <div className={'qr-nickname'} style={{height:(qrHeight/4),top:toolbarHeight + (qrHeight/8) - 8}}>{nickName[nickName.length - 1]}</div>
+            }
+            <div className={'qr-name'} style={{height:(qrHeight/4),top:toolbarHeight}} onClick={()=>{EditName()}}>{}</div>
         </div>
         <img src={detail} className='detail-style' alt={""}/>
         <div className={"footer-wrapper"}>

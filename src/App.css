@@ -4,6 +4,21 @@
   overflow-x: hidden;
 }
 
+.qr-name{
+  position: absolute;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+.qr-nickname{
+  font-size: 20px;
+  color: white;
+  position: absolute;
+  width: 100vw;
+  font-weight: bold;
+  padding-left: 85px;
+}
+
 .qr-time {
   position: absolute;
   bottom: 14px;
