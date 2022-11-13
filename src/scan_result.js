@@ -86,8 +86,17 @@ function ScanResult(){
         }
 
         let loc = localStorage.getItem('history_location');
+        if(loc == null){
+            loc = "莎莎一号舞厅91号入口"
+        }
         let area = localStorage.getItem('history_area');
+        if(area == null){
+            area = "莎莎区"
+        }
         let road = localStorage.getItem('history_road');
+        if(road == null){
+            road = "莎莎街道"
+        }
         setLocation(loc);
         setArea(area);
         setRoad(road);
