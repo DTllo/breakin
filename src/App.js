@@ -48,14 +48,12 @@ function App() {
     function EditName(){
         let name = prompt('请输入你的姓名', '');
         if(name !== null && name !== "") {
-            console.log(name.length,name[name.length - 1])
             setNickName(name)
             localStorage.setItem('name',name);
         }
     }
     useEffect(()=>{
         let name = localStorage.getItem('name');
-        console.log(name)
         setNickName(name == null ? '' : name);
     },[])
 
