@@ -44,9 +44,7 @@
   box-sizing: border-box;
 }
 
-.qr-style {
-  width: 100vw;
-}
+
 
 .qr-toolbar {
   width: 100vw;
@@ -101,3 +99,22 @@
   margin-bottom: 50px;
 }
 
+.detail-click {
+  width: calc(30vw + 30px);
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.qr-style {
+  width: 100vw;
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*left: 0;*/
+}
+
+.detail-style-wrapper{
+  position: relative;
+  width: 100vw;
+}

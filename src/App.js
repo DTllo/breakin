@@ -4,6 +4,7 @@ import detail from './assets/detail_img.png';
 
 import './App.css';
 import {useEffect, useRef, useState} from "react";
+import {Link} from "react-router-dom";
 
 function App() {
     let [time,setTime] = useState('')
@@ -13,6 +14,9 @@ function App() {
     let [toolbarHeight,setToolbarHeight] = useState(45);
     let [qrHeight,setQrHeight] = useState(90);
     let [nickName,setNickName] = useState("");
+    let detailRef = useRef();
+    let [detailHeight,setDetailHeight] = useState(252);
+
     function CheckTime(i){
         if(i < 10){
             i = '0' + i;
@@ -38,6 +42,7 @@ function App() {
     function GetToolBarHeight(){
         setToolbarHeight(toolbarRef.current.offsetHeight);
         setQrHeight(qrRef.current.offsetHeight)
+        setDetailHeight(detailRef.current.offsetHeight);
     }
 
     function EditName(){
@@ -68,6 +73,8 @@ function App() {
         }
     })
 
+
+
   return (
     <div className="qr-app">
         <div className={'qr-img-wrapper'} style={{paddingTop:toolbarHeight}}>
@@ -79,7 +86,11 @@ function App() {
             }
             <div className={'qr-name'} style={{height:(qrHeight/4),top:toolbarHeight}} onClick={()=>{EditName()}}>{}</div>
         </div>
-        <img src={detail} className='detail-style' alt={""}/>
+        <div className={'detail-style-wrapper'} style={{height:detailHeight}}>
+            <img src={detail} className='detail-style' alt={""} ref={detailRef}/>
+            <Link to={'/scan'}><div className={'detail-click'} style={{height:detailHeight / 3 + 20}}></div></Link>
+        </div>
+
         <div className={"footer-wrapper"}>
             <div className={'footer-wrapper-phone'}>
                 咨询热线：023-12345
