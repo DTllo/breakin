@@ -8,7 +8,6 @@ import reportWebVitals from './reportWebVitals';
 import {
     createBrowserRouter,
     RouterProvider,
-    Route,
     useRouteError
 } from "react-router-dom";
 

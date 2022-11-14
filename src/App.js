@@ -1,8 +1,4 @@
-import qr from './assets/qr_img.png';
-import qr_err from './assets/qr_img_error.png';
-import qr_red from './assets/qr_img_red.png';
-import qr_toolbar from './assets/toolbar.png';
-import detail from './assets/detail_img.png';
+import {qr,qr_err,qr_red,qr_toolbar,detail} from './base64_img';
 
 
 import './App.css';
@@ -77,16 +73,16 @@ function App() {
         }
     })
     function NickNamePre(){
-        if(nickName.length == 3){
+        if(nickName.length === 3){
             return "* *";
         }
-        if(nickName.length == 2){
+        if(nickName.length === 2){
             return  "*";
         }
     }
 
     function mouseDown(){
-        let start = new Date();
+        // let start = new Date();
     }
 
     function mouseUp(){
@@ -127,7 +123,7 @@ function App() {
             }
             <div className={'qr-time'}>{time}<span>{second}</span></div>
             {
-                nickName !== '' && <div className={'qr-nickname'} style={{height:(qrHeight/4),top:errLevel !== '0'?toolbarHeight + (qrHeight/8) - 20:toolbarHeight + (qrHeight/8) - 8,paddingLeft:nickName.length == 3?'40px':'65px'}}>{NickNamePre()}{" "}{nickName[nickName.length - 1]}</div>
+                nickName !== '' && <div className={'qr-nickname'} style={{height:(qrHeight/4),top:errLevel !== '0'?toolbarHeight + (qrHeight/8) - 20:toolbarHeight + (qrHeight/8) - 8,paddingLeft:nickName.length === 3?'40px':'65px'}}>{NickNamePre()}{" "}{nickName[nickName.length - 1]}</div>
             }
             <div className={'qr-name'} style={{height:(qrHeight/4),top:toolbarHeight}} onClick={()=>{EditName()}}>{}</div>
         </div>

@@ -1,12 +1,8 @@
 import React, {useEffect, useRef, useState} from "react";
 import "./scan-result.css";
-import ScanResultImg from './assets/scan_result.png';
-import ScanResultRight from './assets/scan_result_right.png';
-import ScanBtns from './assets/scan_btns.png';
-import ScanBg from './assets/scan_bg.png';
-import { Outlet, Link } from "react-router-dom";
-import Check24 from './assets/24_check.png';
-import showImg from './assets/show.png';
+import {ScanResultRight,Check24,showImg,ScanBg} from './base64_img';
+import { Link } from "react-router-dom";
+
 function ScanResult(){
     let scanBtnRef = useRef();
     let scanResultRef = useRef();
@@ -14,7 +10,7 @@ function ScanResult(){
     let [btnHeight,setBtnHeight] = useState(0);
     let [resultHeight,setResultHeight] = useState(675);
     let [rightHeight,setRightHeight] = useState(156);
-    let [time,setTime] = useState('');
+    // let [time,setTime] = useState('');
 
     let [location,setLocation] = useState('莎莎一号舞厅91号入口');
     let [area,setArea] = useState('莎莎区');
@@ -34,28 +30,6 @@ function ScanResult(){
             clearInterval(times);
         }
     })
-
-    function CheckTime(i){
-        if(i < 10){
-            i = '0' + i;
-        }
-        return i;
-    }
-
-    function GetTime(){
-        let d= new Date();
-        let year = d.getFullYear()
-        let month = d.getMonth() + 1
-        let date = d.getDate()
-        let h=d.getHours();
-        let m=d.getMinutes();
-        let s=d.getSeconds();
-        h=CheckTime(h);
-        m=CheckTime(m);
-        s=CheckTime(s);
-        let result = year + '-' + month + '-' + date + " " + h + ":" + m + ":" + s
-        setTime(result);
-    }
 
     function HaveHistory(){
         return list.length > 0;
@@ -82,7 +56,6 @@ function ScanResult(){
     }
 
     useEffect(()=>{
-        GetTime();
         let str = localStorage.getItem("history_list");
         let history = JSON.parse(str);
         if(history == null){
