@@ -21,6 +21,45 @@
     width: 100vw;
 }
 
+.scan-result-right-wrapper{
+    width: 100vw;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
+
+.scan-result-right{
+    width: 35vw;
+}
+
+
+.anima {
+    animation-name: likes;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+}
+
+@keyframes likes {
+    0%{
+        transform: scale(1);
+    }
+    25%{
+        transform: scale(0.95);
+    }
+    50%{
+        transform: scale(0.89);
+    }
+    75%{
+        transform: scale(0.95);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
 .scan-bg {
     width: 100vw;
     position: absolute;

@@ -1,14 +1,17 @@
 import React, {useEffect, useRef, useState} from "react";
 import "./scan-result.css";
 import ScanResultImg from './assets/scan_result.png';
+import ScanResultRight from './assets/scan_result_right.png';
 import ScanBtns from './assets/scan_btns.png';
 import ScanBg from './assets/scan_bg.png';
 import { Outlet, Link } from "react-router-dom";
 function ScanResult(){
     let scanBtnRef = useRef();
     let scanResultRef = useRef();
+    let RightRef = useRef();
     let [btnHeight,setBtnHeight] = useState(0);
     let [resultHeight,setResultHeight] = useState(675);
+    let [rightHeight,setRightHeight] = useState(156);
     let [time,setTime] = useState('');
 
     let [location,setLocation] = useState('莎莎一号舞厅91号入口');
@@ -23,6 +26,7 @@ function ScanResult(){
         let times = setInterval(()=>{
             setBtnHeight(scanBtnRef.current.offsetHeight);
             setResultHeight(scanResultRef.current.offsetHeight);
+            setRightHeight(RightRef.current.offsetHeight);
         },300)
         return () => {
             clearInterval(times);
@@ -120,6 +124,9 @@ function ScanResult(){
                 <img className={'scan-bg'} src={ScanBg} alt={''}/>
                 <div className={'scan-result-img-wrapper'} style={{paddingBottom:btnHeight + 15}}>
                     <img className={'scan-result-img'} src={ScanResultImg} alt={''} ref={scanResultRef}/>
+                    <div className={'scan-result-right-wrapper'}  style={{top: resultHeight / 2 - rightHeight / 2}}>
+                        <img className={'scan-result-right anima'} src={ScanResultRight} alt={''} ref={RightRef}/>
+                    </div>
                     <div className={'scan-time'} style={{top:resultHeight / 8 * 2 + 40}}>{time}</div>
                     <div className={'scan-location-location'}>{location}</div>
                     <div className={'scan-location-area'}>重庆市/{area}</div>
