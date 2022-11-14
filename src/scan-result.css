@@ -1,6 +1,6 @@
 .scan-result-wrapper {
     width: 100vw;
-    background-color: #4e8aed;
+    background-color: #bbdaf7;
     height: 100vh;
     position: relative;
     overflow-x: hidden;
@@ -15,6 +15,11 @@
     overflow-x: hidden;
     position: absolute;
     top:100px;
+
+    /* scan page card layout*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .scan-result-img{
@@ -26,12 +31,20 @@
     position: absolute;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .scan-result-right{
     width: 35vw;
 }
 
+.scan-result-right-text{
+    color: #55a777;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 10px;
+}
 
 .anima {
     animation-name: likes;
@@ -67,12 +80,7 @@
     left: 0;
 }
 
-.scan-btns {
-    width: 100vw;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
+
 
 .scan-btns-click{
     width: 100vw;
@@ -88,52 +96,8 @@
     height: 100%;
 }
 
-.scan-time{
-    width: 100vw;
-    position: absolute;
-    top: 0;
-    z-index: 100;
-    margin-left: 42px;
-    font-size: 13px;
-    color: gray;
-}
 
-.scan-location-location{
-    width: calc(100vw - 90px);
-    position: absolute;
-    top: 16px;
-    z-index: 100;
-    margin-left: 42px;
-    font-size: 25px;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-}
 
-.scan-location-area{
-    width: calc(100vw - 90px);
-    position: absolute;
-    top: 65px;
-    z-index: 100;
-    margin-left: 42px;
-    font-size: 17px;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-}
-
-.scan-location-road{
-    width: calc(100vw - 90px);
-    position: absolute;
-    top: 90px;
-    z-index: 100;
-    margin-left: 42px;
-    font-size: 15px;
-    color: gray;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-}
 
 .scan-edit-location{
     width: 100vw;
@@ -162,28 +126,26 @@
     min-height: 200px;
     max-height: 50vh;
 
-    box-shadow: 0 0 0 2px rgb(255, 255, 255),
-    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    /*box-shadow: 0 0 0 2px rgb(255, 255, 255),*/
+    /*0.3em 0.3em 1em rgba(0, 0, 0, 0.3);*/
     background-color: white;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     z-index: 1000;
     display: flex;
     align-items: center;
     /*justify-content: center;*/
     flex-direction: column;
     position: relative;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 10px;
     box-sizing: border-box;;
     overflow-x: hidden;
     overflow-y: scroll;
+
+    border-radius: 5px;
+    border: solid 2px white;
 }
 
 .history-list-bg{
-    width: 100vw;
-    height: 100vh;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -193,8 +155,8 @@
     justify-content: center;
     top: 0;
     left: 0;
-    background-color: gray;
-    opacity: 0.3;
+    background-color: #4b4b4b;
+    opacity: 0.6;
     z-index: 500;
 }
 
@@ -204,16 +166,15 @@
 }
 
 .add-location{
-    padding: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 5px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #4e8aed;
+    background-color: #55a777;
     color: white;
     font-size: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
+    border: solid 2px white;
     /*position: absolute;*/
     /*bottom: 10px;*/
     z-index: 500;
@@ -222,6 +183,7 @@
 
 .history-item{
     padding: 5px;
+    padding-right: 20px;
     border: solid 1px gray;
     border-radius: 5px;
     width: 100%;
@@ -252,7 +214,210 @@
 
 .history-item-delete{
     position: absolute;
-    top: 5px;
+    top: -5px;
     right: 8px;
-    font-size: 10px;
+    font-size: 20px;
+    color: red;
+}
+
+.scan-btns {
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.scan-page-bottom-btn-slots{
+    /* style */
+    height: 95px;
+    width: 100vw;
+    background-color: white;
+    padding: 0 25px;
+    box-sizing: border-box;
+
+    /* children layout */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    /* layout */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    box-shadow: 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.spb-back-yk-page {
+    text-decoration: none;
+}
+
+.spb-open-xc-popup {
+
+}
+
+.spb-btn {
+    /* wrapper style */
+    padding: 15px;
+    border-radius: 5px;
+
+    /* text style */
+    color: white;
+    font-size: 18px;
+
+}
+
+.sp-card {
+    /* style */
+    height: 678px;
+    width: calc(100vw - 32px);
+    background-color: white;
+    border-radius: 10px;
+
+    /* children style */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sp-card-header {
+    height: 136px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sp-card-virtual-line {
+    /*border: solid 1px gray;*/
+    /*width: 100%;*/
+    /*position: absolute;*/
+    /*right: 10px;*/
+    width: 100%;
+    height: 1px;
+    background-image: linear-gradient(to left, #c9d8eb 1%, #c9d8eb 5%, transparent 50%);
+    background-size: 8px 1px;
+    background-repeat: repeat-x;
+    position: relative;
+}
+
+.sp-card-virtual-line-circle-l {
+    width: 18px;
+    height: 18px;
+    border-radius: 18px;
+    background-color: #bbdaf7;
+    position: absolute;
+    top: -9px;
+    left: -9px;
+}
+
+.sp-card-virtual-line-circle-r {
+    width: 18px;
+    height: 18px;
+    border-radius: 18px;
+    background-color: #bbdaf7;
+    position: absolute;
+    top: -9px;
+    right: -9px;
+}
+
+.scan-location-location{
+    width: calc(100vw - 90px);
+    /*position: absolute;*/
+    /*top: 16px;*/
+    z-index: 100;
+    /*margin-left: 42px;*/
+    font-size: 25px;
+    font-weight: bold;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.scan-location-area{
+    width: calc(100vw - 90px);
+    /*position: absolute;*/
+    /*top: 65px;*/
+    z-index: 100;
+    /*margin-left: 42px;*/
+    margin-top: auto;
+    font-size: 17px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.scan-location-road{
+    width: calc(100vw - 90px);
+    /*position: absolute;*/
+    /*top: 90px;*/
+    z-index: 100;
+    /*margin-left: 42px;*/
+    margin-top: 5px;
+    font-size: 14px;
+    color: gray;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.sp-card-detail {
+    height: calc(100% - 136px);
+    width: 100%;
+    box-sizing: border-box;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.scan-time{
+    margin-top: 16px;
+    font-size: 15px;
+    color: gray;
+}
+
+
+.sp-card-detail-title{
+    font-size: 24px;
+}
+
+.sc-user-info{
+    width: 100%;
+    height: 160px;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.sc-user-info-title{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.sc-user-edit{
+    display: flex;
+    margin-top: 10px;
+}
+.sc-user-edit-key{
+    color: gray;
+    font-size: 17px;
+}
+.sc-user-edit-value{
+    margin-left: auto;
+}
+.sc-user-edit-show-icon{
+    width: 30px;
+    margin-left: 10px;
+}
+
+.check-24{
+    width: 150px;
+    position: absolute;
+    right: 0;
+    top: 10px;
 }
