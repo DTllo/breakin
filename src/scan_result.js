@@ -140,7 +140,7 @@ function ScanResult(){
                                                     localStorage.setItem('history_area',value.area);
                                                     localStorage.setItem('history_road',value.road);
                                                 }}>
-                                                    <div className={'history-item-location'}>No.{index} : {value.location}</div>
+                                                    <div className={'history-item-location'}>No.{index + 1} : {value.location}</div>
                                                     <div className={'history-item-area'}>{value.area} - {value.road}</div>
                                                     <div className={'history-item-delete'} onClick={(e)=>{
                                                         // console.log(value.id)
@@ -265,7 +265,7 @@ function ScanCardUserInfo(){
     return(
         <div className={'sc-user-info'}>
             <div className={'sc-user-info-title'}>扫码用户信息</div>
-            <ScanCardUserEdit name={'手机'} value={username} setValue={()=>{}}/>
+            <ScanCardUserEdit name={'姓名'} value={username} setValue={()=>{}}/>
             <ScanCardUserEdit name={'手机号码'} value={phone} setValue={()=>{}}/>
             <ScanCardUserEdit name={'证件号码'} value={identity} setValue={()=>{}}/>
         </div>

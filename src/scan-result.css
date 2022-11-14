@@ -412,11 +412,13 @@
 }
 .sc-user-edit-show-icon{
     width: 30px;
+    height: 21px;
     margin-left: 10px;
 }
 
 .check-24{
     width: 150px;
+    height: 101px;
     position: absolute;
     right: 0;
     top: 10px;
