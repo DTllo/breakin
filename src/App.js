@@ -1,5 +1,13 @@
-import {qr,qr_err,qr_red,qr_toolbar,detail} from './base64_img';
-
+import qr from './assets/qr_img.png';
+import qrCode from './assets/qr_code.png';
+import g_r from './assets/g_r.png';
+import b_r from './assets/b_r.png';
+import scan_icon from './assets/scan_icon.png';
+import up_icon from './assets/up_icon.png';
+import question_icon from './assets/question_icon.png';
+import home_icon from './assets/home.png';
+import rr from './assets/rr.png';
+import finished from './assets/finished.png';
 
 import './App.css';
 import {useEffect, useRef, useState} from "react";
@@ -11,10 +19,8 @@ function App() {
     let toolbarRef = useRef();
     let qrRef = useRef();
     let [toolbarHeight,setToolbarHeight] = useState(45);
-    let [qrHeight,setQrHeight] = useState(90);
+    let [qrHeight,setQrHeight] = useState(425);
     let [nickName,setNickName] = useState("");
-    let detailRef = useRef();
-    let [detailHeight,setDetailHeight] = useState(252);
     let [errLevel,setErrLevel] = useState('0');
 
     function CheckTime(i){
@@ -42,7 +48,6 @@ function App() {
     function GetToolBarHeight(){
         setToolbarHeight(toolbarRef.current.offsetHeight);
         setQrHeight(qrRef.current.offsetHeight)
-        setDetailHeight(detailRef.current.offsetHeight);
     }
 
     function EditName(){
@@ -82,7 +87,6 @@ function App() {
     }
 
     function mouseDown(){
-        // let start = new Date();
     }
 
     function mouseUp(){
@@ -110,27 +114,25 @@ function App() {
 
   return (
     <div className="qr-app">
-        <div className={'qr-img-wrapper'} style={{paddingTop:toolbarHeight}}>
-            <img className={'qr-toolbar'} src={qr_toolbar}  alt={""} ref={toolbarRef}/>
+        <div className={'qr-img-wrapper'} style={{paddingTop:toolbarHeight + 20}}>
+            <YKToolbar reference={toolbarRef}/>
+            <YKToolbarTip/>
+            <QRCode qrHeight={qrHeight}/>
             {
                 errLevel === '0' && <img onMouseDown={mouseDown} onMouseUp={mouseUp} className={'qr-style'} src={qr}  alt={""} ref={qrRef}/>
-            }
-            {
-                errLevel === '1' && <img onMouseDown={mouseDown} onMouseUp={mouseUp} className={'qr-style'} src={qr_err}  alt={""} ref={qrRef}/>
-            }
-            {
-                errLevel === '2' && <img onMouseDown={mouseDown} onMouseUp={mouseUp} className={'qr-style'} src={qr_red}  alt={""} ref={qrRef}/>
             }
             <div className={'qr-time'}>{time}<span>{second}</span></div>
             {
                 nickName !== '' && <div className={'qr-nickname'} style={{height:(qrHeight/4),top:errLevel !== '0'?toolbarHeight + (qrHeight/8) - 20:toolbarHeight + (qrHeight/8) - 8,paddingLeft:nickName.length === 3?'40px':'65px'}}>{NickNamePre()}{" "}{nickName[nickName.length - 1]}</div>
             }
-            <div className={'qr-name'} style={{height:(qrHeight/4),top:toolbarHeight}} onClick={()=>{EditName()}}>{}</div>
+            <div className={'qr-name'} style={{height:(qrHeight/4),top:toolbarHeight}}>
+                <div className={'change-qr-name'} onClick={()=>{EditName()}}>
+                    切换亮码人员
+                </div>
+            </div>
         </div>
-        <div className={'detail-style-wrapper'} style={{height:detailHeight}}>
-            <img src={detail} className='detail-style' alt={""} ref={detailRef}/>
-            <Link to={'/yukang_code_fake/scan'}><div className={'detail-click'} style={{height:detailHeight / 3 + 20}}></div></Link>
-        </div>
+        <ResultWrapper/>
+        <BtnWrapper/>
 
         <div className={"footer-wrapper"}>
             <div className={'footer-wrapper-phone'}>
@@ -142,6 +144,109 @@ function App() {
         </div>
     </div>
   );
+}
+
+function YKToolbar(props){
+    let {reference} = props;
+    return(
+        <div className={'yk-toolbar'} ref={reference}>
+            <div className={'yk-toolbar-l-w'}>
+                <img src={home_icon} className={'yk-toolbar-home'}/>
+                <span>首页</span>
+            </div>
+            <div className={'yk-toolbar-title'}>我的渝康码</div>
+            <div className={'yk-toolbar-r-w'}>
+                <div className={'yk-toolbar-r-w-b'}>
+                    <img src={rr} className={'yk-toolbar-img'}/>
+                </div>
+            </div>
+
+        </div>
+    )
+}
+
+function YKToolbarTip(props){
+    return(
+        <div className={'yk-toolbar-tip'}>
+            <span>温馨提示：代人申领已移至首页防疫服务的"亲友代领"</span>
+        </div>
+    )
+}
+
+function QRCode(props){
+    let {qrHeight} = props;
+    return(
+        <div className={'qr-code-wrapper'} style={{height:qrHeight}}>
+            <div className={'qr-code'}>
+                <img className={'qr-code-img'} src={qrCode}/>
+                <img className={'qr-code-finished'} src={finished}/>
+            </div>
+            <div className={'qr-code-type'}>
+                <span>绿码</span>
+            </div>
+        </div>
+    )
+}
+
+function ResultWrapper(){
+    return(
+        <div className={'result-wrapper'}>
+            <div className={'result-hs'}>
+                <ResultTools src={g_r} text={'核酸检测'}/>
+                <TextWrapper hour={'24'} h_c={'#03992d'} t={'小时'} b={'阴性'}/>
+            </div>
+            <div className={'result-ym'}>
+                <ResultTools src={b_r} text={'疫苗接种'}/>
+                <TextWrapper hour={'3'} h_c={'#333333'} t={'剂'} b={'(共3剂)'}/>
+            </div>
+        </div>
+    )
+}
+
+function ResultTools(props){
+    let {src,text} = props;
+    return(
+        <div className={'result-tools'}>
+            <img className={'result-tools-icon'} src={src}/>
+            <div className={'result-tools-text'}>{text}</div>
+            <div className={'result-tools-right'}>></div>
+        </div>
+    )
+}
+
+function TextWrapper(props){
+    let {hour,h_c,t,b} = props;
+    return(
+        <div className={'text-wrapper'} style={{color:h_c}}>
+            <div className={'text-wrapper-l'}>
+                <span>{hour}</span>
+            </div>
+            <div className={'text-wrapper-r'}>
+                <div className={'text-wrapper-r-t'}>{t}</div>
+                <div className={'text-wrapper-r-b'}>{b}</div>
+            </div>
+        </div>
+    )
+}
+
+function BtnWrapper(){
+    return(
+        <div className={'btn-wrapper'}>
+            <Link className={'none-text-dec'} to={'/yukang_code_fake/scan'}><InfoBtn icon={scan_icon} text={'场所码|入渝码'}/></Link>
+            <InfoBtn icon={up_icon} text={'通信行程卡'}/>
+            <InfoBtn icon={question_icon} text={'我有疑问'}/>
+        </div>
+    )
+}
+
+function InfoBtn(props){
+    let {icon,text} = props;
+    return(
+        <div className={'info-btn'}>
+            <img src={icon}/>
+            <span>{text}</span>
+        </div>
+    )
 }
 
 export default App;

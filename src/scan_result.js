@@ -23,7 +23,7 @@ function ScanResult(){
     useEffect(()=>{
         let times = setInterval(()=>{
             setBtnHeight(scanBtnRef.current.offsetHeight);
-            setResultHeight(scanResultRef.current.offsetHeight);
+            // setResultHeight(scanResultRef.current.offsetHeight);
             setRightHeight(RightRef.current.offsetHeight);
         },300)
         return () => {
