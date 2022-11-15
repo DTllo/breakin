@@ -12,9 +12,9 @@ function ScanResult(){
     let [rightHeight,setRightHeight] = useState(156);
     // let [time,setTime] = useState('');
 
-    let [location,setLocation] = useState('莎莎一号舞厅91号入口');
-    let [area,setArea] = useState('莎莎区');
-    let [road,setRoad] = useState('莎莎街道');
+    let [location,setLocation] = useState('');
+    let [area,setArea] = useState('');
+    let [road,setRoad] = useState('');
 
     let [list,setList] = useState([]);
 
