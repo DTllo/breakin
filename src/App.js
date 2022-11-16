@@ -1,5 +1,5 @@
-import qr from './assets/qr_img.png';
-import qrCode from './assets/qr_code.png';
+import qr from './assets/qr_img_small.png';
+import qrCode from './assets/qr_code_small.png';
 import g_r from './assets/g_r.png';
 import b_r from './assets/b_r.png';
 import scan_icon from './assets/scan_icon.png';

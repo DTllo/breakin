@@ -2,9 +2,6 @@
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*align-items: center;*/
 }
 
 .qr-name{
@@ -58,8 +55,6 @@
   position: relative;
   box-sizing: border-box;
 }
-
-
 
 .qr-toolbar {
   width: 100vw;
@@ -124,9 +119,6 @@
 
 .qr-style {
   width: 100vw;
-  /*position: absolute;*/
-  /*top: 0;*/
-  /*left: 0;*/
 }
 
 .detail-style-wrapper{
@@ -145,8 +137,7 @@
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  padding: 0 16px;
-  padding-right: 8px;
+  padding: 0 8px 0 16px;
 }
 
 .yk-toolbar-tip{
