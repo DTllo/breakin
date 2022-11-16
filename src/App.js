@@ -232,7 +232,7 @@ function TextWrapper(props){
 function BtnWrapper(){
     return(
         <div className={'btn-wrapper'}>
-            <Link className={'none-text-dec'} to={'/yukang_code_fake/scan'}><InfoBtn icon={scan_icon} text={'场所码|入渝码'}/></Link>
+            <Link className={'none-text-dec'} to={'/scan'}><InfoBtn icon={scan_icon} text={'场所码|入渝码'}/></Link>
             <InfoBtn icon={up_icon} text={'通信行程卡'}/>
             <InfoBtn icon={question_icon} text={'我有疑问'}/>
         </div>

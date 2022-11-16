@@ -174,7 +174,7 @@ function ScanPageBottomBtnSlots(props){
 
 function ScanPageBottomBtnGoBackToYuKangPage(){
     return(
-        <Link className={'spb-back-yk-page'} to={'/yukang_code_fake/'}>
+        <Link className={'spb-back-yk-page'} to={'/'}>
             <ScanPageBottomBtn backgroundColor={'#51be85'} text={'出示渝康码首页'}/>
         </Link>
     )
